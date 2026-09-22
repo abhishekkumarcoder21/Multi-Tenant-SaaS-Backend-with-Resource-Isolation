@@ -1,0 +1,51 @@
+{
+  "name": "multi-tenant-saas-backend",
+  "version": "1.0.0",
+  "description": "Production-grade multi-tenant SaaS backend with resource isolation",
+  "type": "module",
+  "main": "dist/app.js",
+  "scripts": {
+    "dev": "tsx watch src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "lint": "eslint src/ tests/",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:load": "k6 run load-tests/noisy-neighbor.k6.js",
+    "db:migrate": "tsx src/database/migrate.ts",
+    "db:migrate:admin": "tsx src/database/migrate-admin.ts"
+  },
+  "keywords": [
+    "multi-tenant",
+    "saas",
+    "rls",
+    "rate-limiting",
+    "fastify"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@fastify/cors": "^10.0.0",
+    "@fastify/swagger": "^9.4.0",
+    "@fastify/swagger-ui": "^5.2.0",
+    "bullmq": "^5.30.0",
+    "dotenv": "^16.4.0",
+    "fastify": "^5.1.0",
+    "fastify-plugin": "^6.0.0",
+    "ioredis": "^5.4.0",
+    "nanoid": "^5.0.0",
+    "pg": "^8.13.0",
+    "pino": "^9.5.0",
+    "prom-client": "^15.1.0"
+  },
+  "devDependencies": {
+    "@fastify/type-provider-json-schema-to-ts": "^4.0.0",
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.11.0",
+    "@typescript-eslint/eslint-plugin": "^8.15.0",
+    "@typescript-eslint/parser": "^8.15.0",
+    "eslint": "^9.15.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}
